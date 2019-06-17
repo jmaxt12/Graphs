@@ -87,8 +87,12 @@ class Graph:
         """
 
         # Create an empty set to store visited nodes
+        visited = set()
         # Create an empty Queue and enqueue A PATH TO the starting vertex
+        q = Queue()
+        q.enqueue(starting_vertex)
         # While the queue is not empty...
+        while q.size() > 0:
             # Dequeue the first PATH
             # GRAB THE VERTEX FROM THE END OF THE PATH
             # IF VERTEX = TARGET, RETURN PATH
@@ -107,7 +111,22 @@ class Graph:
         starting_vertex to destination_vertex in
         depth-first order.
         """
-        pass  # TODO
+        # Create an empty set to store visited nodes
+        visited = set()
+        # Create an empty Stack and enqueue A PATH TO the starting vertex
+        s = Stack()
+        s.push(starting_vertex)
+        # While the stack is not empty...
+        while s.size() > 0:
+            # Dequeue the first PATH
+            # GRAB THE VERTEX FROM THE END OF THE PATH
+            # IF VERTEX = TARGET, RETURN PATH
+            # If that vertex has not been visited...
+                # Mark it as visited
+                # Then add A PATH TO all of its neighbors to the back of the queue
+                    # Copy the path
+                    # Append neighbor to the back of the copy
+                    # Enqueue copy
 
 
 
