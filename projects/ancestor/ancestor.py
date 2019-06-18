@@ -33,7 +33,7 @@ class Graph():
         self.vertices[vertex] = set()
     def add_edge(self, v1, v2):
         if v1 in self.vertices and v2 in self.vertices:
-            self.vertices[v1].add(v2)
+            self.vertices[v2].add(v1)
         else:
             raise IndexError("That vertex does not exist!")
 
@@ -51,7 +51,7 @@ class Graph():
         if current == starting_vertex:
             print(f"starting_vertex: {starting_vertex}; earliest known ancestor: ", -1)
         else:
-            print(f"starting_vertex: {starting_vertex}; earliest known ancestor: ", current, "\n\n")
+            print(f"starting_vertex: {starting_vertex}; earliest known ancestor: ", current)
 if __name__ == '__main__':
     graph = Graph()
     graph.add_vertex(10)
@@ -65,16 +65,16 @@ if __name__ == '__main__':
     graph.add_vertex(6)
     graph.add_vertex(7)
     graph.add_vertex(9)
-    graph.add_edge(3, 1)
-    graph.add_edge(3, 2)
-    graph.add_edge(6, 3)
-    graph.add_edge(6, 5)
-    graph.add_edge(7, 5)
-    graph.add_edge(5, 4)
-    graph.add_edge(8, 4)
-    graph.add_edge(9, 8)
-    graph.add_edge(8, 11)
-    graph.add_edge(1, 10)
+    graph.add_edge(1, 3)
+    graph.add_edge(2, 3)
+    graph.add_edge(3, 6)
+    graph.add_edge(5, 6)
+    graph.add_edge(5, 7)
+    graph.add_edge(4, 5)
+    graph.add_edge(4, 8)
+    graph.add_edge(8, 9)
+    graph.add_edge(11, 8)
+    graph.add_edge(10, 1)
 
     graph.earliest_ancestor(10)  #  Should print -1
     graph.earliest_ancestor(1)  #  Should print 10
