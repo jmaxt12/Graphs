@@ -18,6 +18,13 @@ For example, in this diagram and the sample input, 3 is a child of 1 and 2, and 
    \ / \   \
     6   7   9
 ```
+g.g-ma(10)
+  /
+g-ma(1) g-pa(2) 
+     \     /   
+     mom(3)  dad(5)   
+          \  /    \  
+          me(6)  stepSis(7)   
 
 Write a function that, given the dataset and the ID of an individual in the dataset, returns their earliest known ancestor – the one at the farthest distance from the input individual. If there is more than one ancestor tied for "earliest", return the one with the lowest numeric ID. If the input individual has no parents, the function should return -1.
 
@@ -40,7 +47,7 @@ Example output
 ```
 
 Clarifications:
-* The input will not be empty.
+* The input will not be empty. (-1)
 * There are no cycles in the input.
 * There are no "repeated" ancestors – if two individuals are connected, it is by exactly one path.
 * IDs will always be positive integers.
