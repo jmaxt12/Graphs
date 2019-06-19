@@ -1,4 +1,4 @@
----------------------------DAY 1: GRAPHS------------------------------
+#---------------------------DAY 1: GRAPHS------------------------------
 #  TIP: MEMORIZE the algorithms for:
     #  -BREADTH FIRST SEARCH
     #  -DEPTH FIRST SEARCH
