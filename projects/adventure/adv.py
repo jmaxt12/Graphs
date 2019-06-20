@@ -34,18 +34,21 @@ traversalPath = []
 #pick an unexplored exit travel that direction and update the graph. 
 #continue until end.
 #backtrack to the nearest room with unexplored exit (?)
+#if '?', move that direction and add room number of direction to graph.
 
-#Create a dic for path
+#Create a dic for graph
 
 graph = {}
 
-graph = {'n': '?', 's': '?', 'e': '?', 'w': '?'}
+graph[player.currentRoom.id] = {n: '?' for n in player.currentRoom.getExits()}
 
-travel_north = 's'
+travel_north = 'n'
 player.travel(travel_north)
 
 print(player.currentRoom.id)
 print(player.currentRoom.getExits())
+
+print(graph)
 
 
 print('-------------------------------------------------------')
