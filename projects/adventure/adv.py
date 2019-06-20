@@ -30,19 +30,27 @@ traversalPath = []
     #Once you get to end, Backtrack to the nearest room that has an unexplored exit(?)
 #Build the graph
 #Traverse
+
+#pick an unexplored exit travel that direction and update the graph. 
+#continue until end.
+#backtrack to the nearest room with unexplored exit (?)
+
 #Create a dic for path
+
 graph = {}
+
+graph = {'n': '?', 's': '?', 'e': '?', 'w': '?'}
+
+travel_north = 's'
+player.travel(travel_north)
 
 print(player.currentRoom.id)
 print(player.currentRoom.getExits())
 
 
-
-
-
-print('---------------------------')
-print('---------------------------')
-print('---------------------------')
+print('-------------------------------------------------------')
+print('-------------------------------------------------------')
+print('-------------------------------------------------------')
 # TRAVERSAL TEST
 visited_rooms = set()
 player.currentRoom = world.startingRoom
