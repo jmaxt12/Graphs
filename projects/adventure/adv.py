@@ -47,7 +47,7 @@ player = Player("Name", world.startingRoom)
 
 #Create a dic for graph
 
-traversalPath = ['n', 's', 'e', 'w']
+traversalPath = []
 s = Stack()
 graph = {}
 
@@ -166,7 +166,7 @@ while len(traversalPath) < 2000:
         player.travel(back)
         traversalPath.append(back)
 
-print(traversalPath)
+# print(traversalPath)
     
 
 
