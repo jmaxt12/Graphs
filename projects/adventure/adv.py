@@ -68,27 +68,53 @@ while len(traversalPath) < 2000:
     print("Exits", current_exits)
 
     # if n is '?', travel north and add n to path. 
-    if "n" in current_exits and current_exits["n"] == "?":
-        player.travel("n")
-        traversalPath.append("n")
-        next_room = player.currentRoom.id
-        current_exits["n"] = next_room
+    # if "n" in current_exits and current_exits["n"] == "?":
+    #     player.travel("n")
+    #     traversalPath.append("n")
+    #     next_room = player.currentRoom.id
+    #     current_exits["n"] = next_room
         
-        # If the next room isn't in the graph
+    #     # If the next room isn't in the graph
+    #     if next_room not in graph:
+    #         next_room_exits = {}
+
+    #         # Set the "?" to correct direction. The next room exit "s" needs to be the current room
+    #         for exit in player.currentRoom.getExits():
+    #             next_room_exits[exit] = "?"
+
+    #         next_room_exits["s"] = currentRoom
+    #         graph[next_room] = next_room_exits
+
+    #     # Add the room to the stack for DFS
+    #     else:
+    #         graph[next_room]["s"] = currentRoom
+    #     s.push("s")
+
+    # Repeat for s
+    if "s" in current_exits and current_exits["s"] == "?":
+        player.travel("s")
+        traversalPath.append("s")
+        next_room = player.currentRoom.id
+        current_exits["s"] = next_room
+        
         if next_room not in graph:
             next_room_exits = {}
 
-            # Set the "?" to correct direction. The next room exit "s" needs to be the current room
             for exit in player.currentRoom.getExits():
                 next_room_exits[exit] = "?"
 
-            next_room_exits["s"] = currentRoom
+            next_room_exits["n"] = currentRoom
             graph[next_room] = next_room_exits
 
-        # Add the room to the stack for DFS
         else:
-            graph[next_room]["s"] = currentRoom
-        s.push("s")
+            graph[next_room]["n"] = currentRoom
+        s.push("n")
+
+    # Repeat for e
+
+    # Repeat for w
+
+    
 
 
     break
