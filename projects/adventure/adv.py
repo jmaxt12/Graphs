@@ -68,70 +68,70 @@ while len(traversalPath) < 2000:
     print("Exits", current_exits)
 
     # if n is '?', travel north and add n to path. 
-    # if "n" in current_exits and current_exits["n"] == "?":
-    #     player.travel("n")
-    #     traversalPath.append("n")
-    #     next_room = player.currentRoom.id
-    #     current_exits["n"] = next_room
+    if "n" in current_exits and current_exits["n"] == "?":
+        player.travel("n")
+        traversalPath.append("n")
+        next_room = player.currentRoom.id
+        current_exits["n"] = next_room
         
-    #     # If the next room isn't in the graph
-    #     if next_room not in graph:
-    #         next_room_exits = {}
+        # If the next room isn't in the graph
+        if next_room not in graph:
+            next_room_exits = {}
 
-    #         # Set the "?" to correct direction. The next room exit "s" needs to be the current room
-    #         for exit in player.currentRoom.getExits():
-    #             next_room_exits[exit] = "?"
+            # Set the "?" to correct direction. The next room exit "s" needs to be the current room
+            for exit in player.currentRoom.getExits():
+                next_room_exits[exit] = "?"
 
-    #         next_room_exits["s"] = currentRoom
-    #         graph[next_room] = next_room_exits
+            next_room_exits["s"] = currentRoom
+            graph[next_room] = next_room_exits
 
-    #     # Add the room to the stack for DFS
-    #     else:
-    #         graph[next_room]["s"] = currentRoom
-    #     s.push("s")
+        # Add the room to the stack for DFS
+        else:
+            graph[next_room]["s"] = currentRoom
+        s.push("s")
 
-    # # Repeat for s
-    # if "s" in current_exits and current_exits["s"] == "?":
-    #     player.travel("s")
-    #     traversalPath.append("s")
-    #     next_room = player.currentRoom.id
-    #     current_exits["s"] = next_room
+    # Repeat for s
+    elif "s" in current_exits and current_exits["s"] == "?":
+        player.travel("s")
+        traversalPath.append("s")
+        next_room = player.currentRoom.id
+        current_exits["s"] = next_room
         
-    #     if next_room not in graph:
-    #         next_room_exits = {}
+        if next_room not in graph:
+            next_room_exits = {}
 
-    #         for exit in player.currentRoom.getExits():
-    #             next_room_exits[exit] = "?"
+            for exit in player.currentRoom.getExits():
+                next_room_exits[exit] = "?"
 
-    #         next_room_exits["n"] = currentRoom
-    #         graph[next_room] = next_room_exits
+            next_room_exits["n"] = currentRoom
+            graph[next_room] = next_room_exits
 
-    #     else:
-    #         graph[next_room]["n"] = currentRoom
-    #     s.push("n")
+        else:
+            graph[next_room]["n"] = currentRoom
+        s.push("n")
 
     # Repeat for e
-    # if "e" in current_exits and current_exits["e"] == "?":
-    #     player.travel("e")
-    #     traversalPath.append("e")
-    #     next_room = player.currentRoom.id
-    #     current_exits["e"] = next_room
+    elif "e" in current_exits and current_exits["e"] == "?":
+        player.travel("e")
+        traversalPath.append("e")
+        next_room = player.currentRoom.id
+        current_exits["e"] = next_room
         
-    #     if next_room not in graph:
-    #         next_room_exits = {}
+        if next_room not in graph:
+            next_room_exits = {}
 
-    #         for exit in player.currentRoom.getExits():
-    #             next_room_exits[exit] = "?"
+            for exit in player.currentRoom.getExits():
+                next_room_exits[exit] = "?"
 
-    #         next_room_exits["w"] = currentRoom
-    #         graph[next_room] = next_room_exits
+            next_room_exits["w"] = currentRoom
+            graph[next_room] = next_room_exits
 
-    #     else:
-    #         graph[next_room]["w"] = currentRoom
-    #     s.push("w")    
+        else:
+            graph[next_room]["w"] = currentRoom
+        s.push("w")    
 
     # Repeat for w
-    if "w" in current_exits and current_exits["w"] == "?":
+    elif "w" in current_exits and current_exits["w"] == "?":
         player.travel("w")
         traversalPath.append("w")
         next_room = player.currentRoom.id
