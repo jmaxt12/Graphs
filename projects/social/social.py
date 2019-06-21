@@ -24,7 +24,7 @@ class SocialGraph:
 
     def addUser(self, name):
         """
-        Create a new user with a sequential integer ID
+        Creates a new user with a sequential integer ID
         """
         self.lastID += 1  # automatically increment the ID to assign the new user
         self.users[self.lastID] = User(name)
@@ -45,10 +45,17 @@ class SocialGraph:
         self.users = {}
         self.friendships = {}
         # !!!! IMPLEMENT ME
-
+        sg = SocialGraph()
         # Add users
+        # Use a loop to iterate through numbers
+        for user in range(numUsers):
+            self.addUser(user)
+        # For each user, randomly generate friendships based on average friendship parameter
+        # Check to see if graph has been populated properly 
 
         # Create friendships
+        # sg.populateGraph(10, 2)
+        # print(sg.friendships)
 
     def getAllSocialPaths(self, userID):
         """
