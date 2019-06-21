@@ -9,6 +9,7 @@ import random
 world = World()
 
 # You may uncomment the smaller graphs for development and testing purposes.
+# roomGraph={0: [(3, 5), {}]}
 # roomGraph={0: [(3, 5), {'n': 1}], 1: [(3, 6), {'s': 0, 'n': 2}], 2: [(3, 7), {'s': 1}]}
 # roomGraph={0: [(3, 5), {'n': 1, 's': 5, 'e': 3, 'w': 7}], 1: [(3, 6), {'s': 0, 'n': 2}], 2: [(3, 7), {'s': 1}], 3: [(4, 5), {'w': 0, 'e': 4}], 4: [(5, 5), {'w': 3}], 5: [(3, 4), {'n': 0, 's': 6}], 6: [(3, 3), {'n': 5}], 7: [(2, 5), {'w': 8, 'e': 0}], 8: [(1, 5), {'e': 7}]}
 # roomGraph={0: [(3, 5), {'n': 1, 's': 5, 'e': 3, 'w': 7}], 1: [(3, 6), {'s': 0, 'n': 2}], 2: [(3, 7), {'s': 1}], 3: [(4, 5), {'w': 0, 'e': 4}], 4: [(5, 5), {'w': 3}], 5: [(3, 4), {'n': 0, 's': 6}], 6: [(3, 3), {'n': 5, 'w': 11}], 7: [(2, 5), {'w': 8, 'e': 0}], 8: [(1, 5), {'e': 7}], 9: [(1, 4), {'n': 8, 's': 10}], 10: [(1, 3), {'n': 9, 'e': 11}], 11: [(2, 3), {'w': 10, 'e': 6}]}
@@ -60,12 +61,13 @@ while len(traversalPath) < 2000:
     if currentRoom not in graph:
         current_exits = {}
 
+        #for each exit, asign the value of "?"
         for exit in player.currentRoom.getExits():
             current_exits[exit] = "?"
         graph[currentRoom] = current_exits
 
     current_exits = graph[currentRoom]
-    print("Exits", current_exits)
+    print("Room", currentRoom, "Current Exits", current_exits)
 
     # if n is '?', travel north and add n to path. 
     if "n" in current_exits and current_exits["n"] == "?":
@@ -149,10 +151,26 @@ while len(traversalPath) < 2000:
         else:
             graph[next_room]["e"] = currentRoom
         s.push("e")   
+
+    # Else if there are no more "?" go back until you can find a "?"
+    # Remove from Stack to go back - filo
+
+
+    else:
+        back = s.pop()
+
+        # if no back, stop
+        if back is None:
+            break
+
+        player.travel(back)
+        traversalPath.append(back)
+
+print(traversalPath)
     
 
 
-    break
+  
 
 
 # graph[currentRoom] = {n: '?' for n in player.currentRoom.getExits()}
@@ -180,7 +198,7 @@ while len(traversalPath) < 2000:
 # print(player.currentRoom.id)
 # print(player.currentRoom.getExits())
 
-print(graph)
+# print(graph)
 
 
 print('-------------------------------------------------------')
