@@ -111,11 +111,31 @@ while len(traversalPath) < 2000:
     #     s.push("n")
 
     # Repeat for e
-    if "e" in current_exits and current_exits["e"] == "?":
-        player.travel("e")
-        traversalPath.append("e")
+    # if "e" in current_exits and current_exits["e"] == "?":
+    #     player.travel("e")
+    #     traversalPath.append("e")
+    #     next_room = player.currentRoom.id
+    #     current_exits["e"] = next_room
+        
+    #     if next_room not in graph:
+    #         next_room_exits = {}
+
+    #         for exit in player.currentRoom.getExits():
+    #             next_room_exits[exit] = "?"
+
+    #         next_room_exits["w"] = currentRoom
+    #         graph[next_room] = next_room_exits
+
+    #     else:
+    #         graph[next_room]["w"] = currentRoom
+    #     s.push("w")    
+
+    # Repeat for w
+    if "w" in current_exits and current_exits["w"] == "?":
+        player.travel("w")
+        traversalPath.append("w")
         next_room = player.currentRoom.id
-        current_exits["e"] = next_room
+        current_exits["w"] = next_room
         
         if next_room not in graph:
             next_room_exits = {}
@@ -123,15 +143,12 @@ while len(traversalPath) < 2000:
             for exit in player.currentRoom.getExits():
                 next_room_exits[exit] = "?"
 
-            next_room_exits["w"] = currentRoom
+            next_room_exits["e"] = currentRoom
             graph[next_room] = next_room_exits
 
         else:
-            graph[next_room]["w"] = currentRoom
-        s.push("w")    
-
-    # Repeat for w
-
+            graph[next_room]["e"] = currentRoom
+        s.push("e")   
     
 
 
