@@ -1,7 +1,7 @@
 from room import Room
 from player import Player
 from world import World
-from util import Queue, Stack, Graph
+from util import Queue, Stack
 
 import random
 
@@ -54,7 +54,7 @@ currentRoom = player.currentRoom.id
 # While lenght of the path is less than 2000
 while len(traversalPath) < 2000:
     currentRoom = player.currentRoom.id
-    print('Current Room', currentRoom)
+    #print('Current Room', currentRoom)
 
     # if current room is not in the graph, create the graph
     if currentRoom not in graph:
@@ -66,6 +66,30 @@ while len(traversalPath) < 2000:
 
     current_exits = graph[currentRoom]
     print("Exits", current_exits)
+
+    # if n is '?', travel north and add n to path. 
+    if "n" in current_exits and current_exits["n"] == "?":
+        player.travel("n")
+        traversalPath.append("n")
+        next_room = player.currentRoom.id
+        current_exits["n"] = next_room
+        
+        # If the next room isn't in the graph
+        if next_room not in graph:
+            next_room_exits = {}
+
+            # Set the "?" to correct direction. The next room exit "s" needs to be the current room
+            for exit in player.currentRoom.getExits():
+                next_room_exits[exit] = "?"
+
+            next_room_exits["s"] = currentRoom
+            graph[next_room] = next_room_exits
+
+        # Add the room to the stack for DFS
+        else:
+            graph[next_room]["s"] = currentRoom
+        s.push("s")
+
 
     break
 
